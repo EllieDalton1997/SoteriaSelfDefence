@@ -1,0 +1,228 @@
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height:fit-content;
+    background-color: black;
+    overflow: hidden; 
+}
+
+.title {
+    display: flex;
+    height: fit-content;
+    width: 100vw;
+    justify-content: center;
+}
+
+.title h {
+color: white;
+font-family: "Poppins", sans-serif;
+font-size: 60pt;
+}
+
+:root {
+    --bg-color: rgb(231, 5, 5);
+    --card-color: rgb(241, 0, 0); 
+  }
+  
+.blogs{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+    flex-direction: row;
+    align-items: center;
+}
+  
+  #cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;  
+    max-width: 95vw;
+    width: calc(100% - 20px);
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    align-content: center;
+    
+  }
+  
+  #cards:hover > .card::after {
+    opacity: 1;
+  }
+
+
+  .card:hover{
+    transform: scale(1.05); 
+   } 
+  
+  
+  .card:hover ~ .card-content {
+    opacity: 0;
+  }
+  
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    height: 40vw;
+    flex-direction: row;
+    position: relative;  
+    width: 30vw;  
+    overflow: hidden;
+    z-index: 1; 
+    transition: 600ms ease-in-out;
+   }
+
+
+  .card:has(~ .card:hover) {   
+   transform: scale(.9);
+  }
+
+  .card:hover ~.card{
+    transform: scale(.9);
+      
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+  
+  .card::before,
+  .card::after {
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+  }
+  
+.card:hover .card-info-title{
+  display: none;
+}
+  .card:hover video {
+    opacity: .3;
+  }
+  .card::before {
+    background: radial-gradient(
+      10px circle at var(--mouse-x) var(--mouse-y), 
+      #f60059, 
+      transparent 5% 
+        ); 
+        content:'Self-defence is not just about protecting the body but also protecting the mind. Chose from our revolutionary employee protection program to empower your employees or our mixed martial arts stress buster for a fun pact away day where your team can let it all out!';
+    z-index: 30000;
+    font-size: 2.2vw;   
+    text-align: center;
+  justify-content: center;
+  align-content: center;
+  font-family: 'poppins', sans-serif;
+  color: white;
+  background-color: #f6005a25;
+   
+  }
+  
+  .card::after {  
+    background: radial-gradient(
+      300px circle at var(--mouse-x) var(--mouse-y), 
+      #f6005a7b,
+      transparent 40%     
+    );
+    z-index: 1;
+  }
+  
+  .card > .card-content {
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    inset: 1px;
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
+    
+  }
+  
+
+
+   video {
+    position: absolute; left: -28%;  
+    display: flex;
+  height:100%;
+    z-index: -1;   
+   }
+  /* -- ↓ ↓ ↓ extra card content styles ↓ ↓ ↓ -- */
+  
+  h1, h2, h3, h4, span {
+    color: rgb(240, 240, 240);
+    font-family: "poppins", sans-serif;
+    font-weight: 400;
+    margin: 0px;
+  }
+  
+   .card-image {
+    align-items: center;
+    display: flex;
+    height: 140px;
+    justify-content: center;
+    overflow: hidden;
+    
+  }
+  
+  .card-image > i {
+    font-size: 6em;
+    opacity: 0.25;
+  }
+  
+  .card-info-wrapper {
+    align-items: flex-end; 
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    
+  }
+  
+  .card-info {
+    display: flex; 
+    gap: 10px;
+    
+  }
+  
+  .card-info > i {  
+    font-size: 1em;
+    height: 20px;
+    line-height: 20px;
+  }
+  
+  .card-info-title > h3 {
+    font-size: 1.1em;
+    line-height: 20px;
+    
+  }
+
+  .card-info{
+    text-align: center; 
+  }
+
+  .card-info-title {
+background: #f6005ab1; 
+width: 35vw;
+height: 4vw; align-content: center; 
+
+  }
+  
+  .card-info-title > h4 {
+    
+    font-size: 0.85em;
+    margin-top: 8px;
+    opacity: 1;
+  }
+  
+  /* -- ↓ ↓ ↓ some responsiveness ↓ ↓ ↓ -- */
+  
+ 

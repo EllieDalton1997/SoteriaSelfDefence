@@ -1,0 +1,22 @@
+.card {
+    height: 50vh;
+    width: 50vh;
+    position: relative;
+    background-color: green;
+  
+
+}
+
+.card-wrap {
+    transform: skewX(20deg);
+}
+.card::after {
+    height: 100%;
+    width: 100%;
+    content: '';
+    background-color: blue;
+   z-index: -1;
+    position: absolute;
+    padding: 10%;
+ 
+}

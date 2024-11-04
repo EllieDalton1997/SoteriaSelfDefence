@@ -34,7 +34,7 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   justify-content: flex-end;
   transition: 500ms ease-in-out;  
-
+z-index: 200;  
 } 
 
  
@@ -54,6 +54,8 @@ li {
   float: left;
   margin-right: 2vw;
 }
+
+
 
 .navbar:hover {
   height: 10vh;
@@ -539,6 +541,175 @@ filter: blur(.5Vw);
 opacity:.5;  
   z-index: -1; 
 }
+
+.mission::after{
+  content: '';
+  position: absolute;bottom: 85px; 
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+  filter: blur(1vw); 
+  opacity: 0.6;  
+ 
+}
+.service::before{
+
+  content: '';
+  position: absolute;
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+ filter:blur(1vw) 
+ opacity(0.6); 
+}
+
+.service::after{
+  content: '';
+  position: absolute;bottom:0px;
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+  filter: blur(1vw);
+  opacity: .6; 
+
+}
+
+.about::before{
+
+  content: '';
+  position: absolute;
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+ filter:blur(1vw) 
+ opacity(0.6); 
+}
+ 
+
+.about::after{
+  content: '';
+  position: absolute;bottom:0px;
+  height: 2pt; 
+  width: 100vw; 
+  background-color: white; 
+  filter: blur(1vw);
+  opacity: .6; 
+
+}
+.quote::before{
+
+  content: '';
+  position: absolute;
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+ filter:blur(1vw) 
+ opacity(0.6); 
+}
+ 
+ 
+.quote::after{
+  content: '';
+  position: absolute;bottom:0px;
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+  filter: blur(1vw);
+  opacity: .6; 
+
+}
+
+
+
+.stats::before{
+
+  content: '';
+  position: absolute;top: 0px;   
+  height: 2pt;
+  width: 100vw; 
+  background-color: white; 
+ filter:blur(1vw)  
+ opacity(0.6); 
+}
+ 
+
+.stats::after{
+  content: '';
+  position: absolute;bottom:-60px;  
+  height: 2.5pt;
+  width: 100vw;  
+  background-color: white; 
+  filter: blur(1vw); 
+  opacity: .6; 
+
+}
+
+.reviews::before{
+ 
+  content: '';
+  position: absolute;top: 0px; 
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+ filter:blur(1vw);  
+ opacity: 0.6 ; 
+}
+ 
+
+.reviews::after{
+  content: '';
+  position: absolute;bottom:0px;
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+  filter: blur(1vw);
+  opacity: .6; 
+}
+
+.usp::before{
+   content: '';
+  position: absolute;top: 0px; 
+  height: 2pt;
+  width: 100vw; 
+  background-color: white; 
+ filter:blur(1vw);  
+ opacity: 0.6 ; 
+}
+ 
+
+.usp::after{
+  content: '';
+  position: absolute;bottom:58px;   
+  height: 3pt; 
+  width: 100vw; 
+  background-color: white; 
+  filter: blur(1vw); 
+  opacity: .6; 
+}
+
+.team::before{
+   content: '';
+  position: absolute;top: 0px; 
+  height: 4pt;
+  width: 100vw; 
+  background-color: white; 
+ filter:blur(1vw);  
+ opacity: 0.6 ; 
+}
+ 
+
+.team::after{
+  content: '';
+  position: absolute;bottom:0px; 
+  height: 4pt; 
+  width: 100vw; 
+  background-color: white; 
+  filter: blur(1vw);
+  opacity: .6;   
+}
+
+
+
 .mission p {
         color: white;
         font-size: 1.35vw; 
@@ -548,7 +719,7 @@ opacity:.5;
         order: 3;
         position: relative; left:3vw;
         margin-bottom:25vh;  
-        transition: 600ms ease-in-out; 
+        transition: 900ms ease-in-out; 
         
 } 
 
@@ -577,14 +748,48 @@ opacity:.5;
   .crown {
     position: absolute;top:6vh;right:20vw;
     transform:rotate(45deg);  
-    height: 9vw;  
-    transition: 600ms ease-in-out;    
+    height: 9vw;   
+     border: 0px;
+     overflow: visible; 
+     transition: 600ms ease-in-out;
   }    
 
-  
-  .crown:hover { 
-    transform: scale(2);
+
+  .about p:hover ~ .crown{ 
+    scale: 1.6; 
+    transform: rotate(0deg) translate(-35%);   
+    } 
+ 
+  .about p:hover { 
+   scale: 1.1;  
+  translate: -5%;
+ 
   }
+ 
+  .mission p:hover {
+    scale: 1.2;
+    translate: 10%; 
+    margin-right: 1vw;
+    margin-top: 3vw; 
+  }
+   
+  .mission p:hover ~img {
+    scale: .8; 
+    margin-left:-1vw;  
+    translate: 10%;
+  }
+
+  .mission p:hover ~.b1 {
+    scale: 1;
+    translate: 20% -160%;   
+  }
+
+
+  .strike:has(~p:hover) {
+    scale: .9; 
+  }
+
+  
  
 
 .service {
@@ -717,7 +922,7 @@ opacity:.5;
 
 
 
-
+ 
 
 
   .youth-background {
@@ -855,6 +1060,7 @@ z-index: 102;
     order: 3;
     position: relative;top: 3.5vw; left: 1vw;
 margin-bottom: 5vh;
+transition: 600ms ease-in-out;
 }
 
  
@@ -1758,3 +1964,16 @@ border-color: white;
       opacity: 1;
     }
   
+
+    .slide {
+      display: none;  
+    }
+
+    .dot {
+      background-color: red;
+      width: 4rem;
+      height: 4rem; 
+      border-radius: 50%;
+      position: absolute;
+      transform: translate(-50%,-50%);
+    }

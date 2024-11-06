@@ -666,7 +666,7 @@ opacity:.5;
   opacity: .6; 
 }
 
-.usp::before{
+.usps::before{
    content: '';
   position: absolute;top: 0px; 
   height: 2pt;
@@ -677,7 +677,7 @@ opacity:.5;
 }
  
 
-.usp::after{
+.usps::after{
   content: '';
   position: absolute;bottom:58px;   
   height: 3pt; 
@@ -1444,7 +1444,7 @@ width: 30vw;
         width: 25vw;
       }
 
-      .usp {
+      .usps {
         position: relative;top: +10vh;
         display: flex;
         justify-content: center;
@@ -1454,7 +1454,7 @@ width: 30vw;
         width: 100vw;
         height: fit-content;
       }
-      .usp img {
+      .usps img {
 
         width: 20vw;
         margin-left: 1vw; 
@@ -1463,11 +1463,11 @@ width: 30vw;
         transition: 900ms ease-in-out;
       }
 
-      .usp img:hover {
+      .usps img:hover {
         transform: scale(1.1);
       }
 
-      .usp h {
+      .usps h {
         font-size: 6.5vw;
         color:white;
         font-family: "poppins", sans-serif;
@@ -1695,35 +1695,7 @@ width: 28vw;
         display: none;
     }
     
-    .review-carousel img.addSlide{
-        display: block;
-        animation-name: fade;
-        animation-duration: 1.5s;
-    }
-    .review-carousel img.addSlide{
-        display: block;
-        animation-name: fade;
-        animation-duration: 1.5s;
-    }
-    .review-carousel button{
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 2rem;
-        padding: 10px 15px;
-        background-color: hsla(0, 0%, 0%, 0.5);
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-    
-    .forward{
-        left: 0;
-    }
-    .backward{
-        right: 0;
-    }
-    
+   
 
     .blogs{
       display: flex;
@@ -1965,15 +1937,20 @@ border-color: white;
     }
   
 
-    .slide {
-      display: none;  
-    }
+  .slider-container {
+    display: none;
+  }
 
-    .dot {
-      background-color: red;
-      width: 4rem;
-      height: 4rem; 
-      border-radius: 50%;
-      position: absolute;
-      transform: translate(-50%,-50%);
-    }
+  .slide-content {
+    display: none; 
+  }
+.stat-container {
+  display: none;
+
+}
+
+.review-container{
+  display: none;
+}
+
+.usp-container {display: none;} 

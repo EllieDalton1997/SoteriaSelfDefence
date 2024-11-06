@@ -1,82 +1,93 @@
-// get our elements
-const slider = document.querySelector('.slider-container'),
-  slides = Array.from(document.querySelectorAll('.slide'))
+/*
+  This JS is from the following project:
+  https://github.com/bushblade/Full-Screen-Touch-Slider
+*/
 
-// set up our state
-let isDragging = false,
-  startPos = 0,
-  currentTranslate = 0,
-  prevTranslate = 0,
-  animationID,
-  currentIndex = 0
+const statSlider = document.querySelector('.stat-container'),
+  stats = Array.from(document.querySelectorAll('.stat'))
 
-// add our event listeners
-slides.forEach((slide, index) => {
-  const slideImage = slide.querySelector('video')
-  // disable default image drag
-  slideImage.addEventListener('dragstart', (e) => e.preventDefault())
-  // pointer events
-  slide.addEventListener('pointerdown', pointerDown(index))
-  slide.addEventListener('pointerup', pointerUp)
-  slide.addEventListener('pointerleave', pointerUp)
-  slide.addEventListener('pointermove', pointerMove)
+  
+let nowDragging = false,
+  startPosition = 0,
+  liveTranslate = 0, 
+  lastTranslate = 0,
+  aniID = 0,
+  liveIndex = 0
+ 
+stats.forEach((stat, number) => {
+  const statImage = stat.querySelector('img')
+statImage.addEventListener('dragstart', (e) => e.preventDefault())
+
+  // Touch events
+  stat.addEventListener('touchstart', Start(number))
+  stat.addEventListener('touchend', End)
+  stat.addEventListener('touchmove', Move)
+
+  // Mouse events
+  stat.addEventListener('mousedown',Start(number))
+  stat.addEventListener('mouseup', End)
+  stat.addEventListener('mouseleave', End)
+  stat.addEventListener('mousemove', Move)
 })
 
-// make responsive to viewport changes
-window.addEventListener('resize', setPositionByIndex)
-
-// prevent menu popup on long press
+// Disable context menu
 window.oncontextmenu = function (event) {
   event.preventDefault()
   event.stopPropagation()
   return false
 }
 
-// use a HOF so we have index in a closure
-function pointerDown(index) {
+function Start(number) {
   return function (event) {
-    currentIndex = index
-    startPos = event.clientX
-    isDragging = true
-    animationID = requestAnimationFrame(animation)
-    slider.classList.add('grabbing')
+    liveIndex = number
+    startPosition = findPositionX(event)
+    nowDragging = true
+
+    aniID = requestAnimationFrame(animation)
+    statSlider.classList.add('grabbing') 
+     }
+} 
+
+function End() {
+  nowDragging = false
+  cancelAnimationFrame(aniID)
+  const movedBy = liveTranslate - lastTranslate 
+
+  if (movedBy < -70 && liveIndex < stats.length - 1) liveIndex += 1
+
+  if (movedBy > 70 && liveIndex > 0) liveIndex -= 1
+
+  positionIndex()
+
+  statSlider.classList.remove('grabbing')
+}
+ 
+function Move(event) {
+  if (nowDragging) {
+    const currentPosition = findPositionX(event)
+    liveTranslate = lastTranslate + currentPosition - startPosition
   }
 }
 
-function pointerMove(event) {
-  if (isDragging) {
-    const currentPosition = event.clientX
-    currentTranslate = prevTranslate + currentPosition - startPos
-  }
+function findPositionX(event) {
+  return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX
 }
 
-function pointerUp() {
-  cancelAnimationFrame(animationID)
-  isDragging = false
-  const movedBy = currentTranslate - prevTranslate
-
-  // if moved enough negative then snap to next slide if there is one
-  if (movedBy < -100 && currentIndex < slides.length - 1) currentIndex += 1
-
-  // if moved enough positive then snap to previous slide if there is one
-  if (movedBy > 100 && currentIndex > 0) currentIndex -= 1
-
-  setPositionByIndex()
-
-  slider.classList.remove('grabbing')
+function animate() {
+  setPosition()
+  if (nowDragging) requestAnimationFrame(animation)
 }
 
-function animation() {
-  setSliderPosition()
-  if (isDragging) requestAnimationFrame(animation)
+
+function setPosition() {
+  statSlider.style.transform = `translateX(${liveTranslate}px)`
 }
 
-function setPositionByIndex() {
-  currentTranslate = currentIndex * -window.innerWidth
-  prevTranslate = currentTranslate
-  setSliderPosition()
+function positionIndex() {
+  liveTranslate = liveIndex * -window.innerWidth
+  lastTranslate = liveTranslate
+  setPosition()
 }
 
-function setSliderPosition() {
-  slider.style.transform = `translateX(${currentTranslate}px)`
-}
+
+
